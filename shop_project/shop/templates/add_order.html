@@ -1,0 +1,18 @@
+<!-- templates/add_order.html -->
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Добавить новый заказ{% endblock %}
+
+{% block content %}
+<h1>Добавить новый заказ</h1>
+<p><a href="{% url 'profile' %}"><span class="red">Вернуться в аккаунт</span></a></p>
+<form class="form bottom" action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input class="button" type="submit" value="Добавить заказ" />
+</form>
+<br><br><br>
+    {% include 'article-form.html' %}
+{% include 'footer_top.html' %}
+
+{% endblock %}

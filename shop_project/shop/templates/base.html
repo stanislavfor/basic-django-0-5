@@ -1,0 +1,39 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <title>{% block title %}Магазин{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/x-icon"/>
+    <style>
+
+    </style>
+</head>
+<body>
+<header>
+    <div class="logo">
+        <a href="{% url 'home' %}"><img src="{% static '/images/_shop-logo.png' %}" alt="shop-logo"></a>
+    </div>
+    <nav>
+        <ul>
+            <li><a class="link-white" href="{% url 'home' %}">Главная</a></li>
+            <li><a class="link-white" href="{% url 'add_product' %}"><span class="red">Добавить продукт</span></a></li>
+            <li><a class="link-white" href="{% url 'products_total' %}">Каталог товаров</a></li>
+            <li><a class="link-white" href="{% url 'products_list' %}"><span class="red">Редактировать Каталог</span></a></li>
+            <li><a class="link-white" href="{% url 'update_profile' %}">Редактировать профиль</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="container">
+    {% block content %}
+    <!-- Основной контент страницы будет вставляться сюда -->
+    {% endblock %}
+</div>
+<footer>
+    Все права защищены © 2025 Shop, Copyright
+</footer>
+</body>
+</html>

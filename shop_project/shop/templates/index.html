@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Главная страница{% endblock %}
+
+{% block content %}
+<h1>Добро пожаловать в наш магазин!</h1>
+<p>Здесь вы можете приобрести лучшие товары онлайн.</p>
+<ul class="vertical_list bottom">
+    <li><a href="{% url 'add_product' %}">Добавить новый продукт</a></li>
+    <li><a href="{% url 'add_order' %}">Сделать и оформить заказ</a></li>
+    <li><a href="{% url 'update_profile' %}">Редактировать профиль пользователя</a></li>
+    <li><a href="{% url 'products_total' %}">Посмотреть Список продукт</a></li>
+</ul>
+    <div style="text-align: center; overflow: hidden;">
+        <img src="{% static 'images/shop-image.jpg' %}" alt="image" style="
+        max-width: 650px; height: auto;">
+    </div>
+{% include 'article.html' %}
+{% include 'footer_menu.html' %}
+{% endblock %}

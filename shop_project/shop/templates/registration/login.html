@@ -1,0 +1,17 @@
+<!-- templates/registration/login.html -->
+{% extends '../base.html' %}
+{% load static %}
+{% block title %}Авторизация{% endblock %}
+
+{% block content %}
+<h2>Вход в систему</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Войти</button>
+</form>
+<br>
+<br>
+<hr>
+<p><a href="{% url 'home' %}"><span class="red">Вернуться на Главную</span></a></p>
+{% endblock %}

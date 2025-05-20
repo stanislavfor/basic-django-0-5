@@ -1,0 +1,9 @@
+<!-- shop/templates/products_total.html -->{% extends 'base.html' %} {% load static %} {% block title %}Все продукты{% endblock %} {% block content %}
+<h1>Список продуктов</h1>
+<p><a href="{% url 'home' %}"><span class="red">Вернуться назад</span></a></p>
+<ul class="border bottom"> {% for product in products %}
+    <li>Название: {{ product.name }}, Цена: {{ product.price }} руб., Количество: {{ product.quantity }}</li> {% empty %}
+    <li>Нет продуктов в базе данных.</li> {% endfor %}
+</ul>
+    {% include 'article-form.html' %}
+    {% include 'footer_top.html' %} {% endblock %}

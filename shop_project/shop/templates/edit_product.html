@@ -1,0 +1,21 @@
+<!-- templates/edit_product.html -->
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Редактировать Продукт{% endblock %}
+
+{% block content %}
+<h1>Редактировать Продукт</h1>
+<form class="form bottom" action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="image-preview" style="width: 80px; height: 80px; overflow: hidden; margin-bottom: 30px;">
+        {% if form.instance.photo %}
+            <img src="{{ form.instance.photo.url }}" alt="Preview" style="max-width: 100%; max-height: 100%;">
+        {% endif %}
+    </div>
+    <input class="button" type="submit" value="Сохранить" />
+</form>
+<p><a href="{% url 'products_list' %}"><span class="red">Вернуться назад</span></a></p>
+    {% include 'article-form.html' %}
+{% include 'footer_top.html' %}
+{% endblock %}

@@ -1,0 +1,5 @@
+Migrations for 'shop':
+  shop\migrations\0002_profile_email_profile_first_name_profile_last_name.py
+    + Add field email to profile
+    + Add field first_name to profile
+    + Add field last_name to profile

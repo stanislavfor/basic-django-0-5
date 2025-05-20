@@ -1,0 +1,21 @@
+<!-- templates/add_product.html -->
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Добавить Продукт{% endblock %}
+
+{% block content %}
+<h1>Добавить новый продукт или товар</h1>
+<form class="form" action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="image-preview" style="width: 50px; height: 50px; overflow: hidden;">
+        {% if form.instance.photo %}
+            <img src="{{ form.instance.photo.url }}" alt="Preview" style="max-width: 100%; max-height: 100%;">
+        {% endif %}
+    </div>
+    <input class="button" type="submit" value="Добавить" />
+</form>
+<p><a href="{% url 'home' %}"><span class="red">Вернуться назад</span></a></p>
+    {% include 'article-form.html' %}
+{% include 'footer_top.html' %}
+{% endblock %}

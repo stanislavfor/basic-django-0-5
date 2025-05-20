@@ -1,0 +1,14 @@
+<!-- shop/templates/delete_product.html -->
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Удаление товара{% endblock %}
+
+{% block content %}
+<p>Вы уверены, что хотите удалить товар "{{ product.name }}"?</p>
+<form class="form bottom" method="post">
+    {% csrf_token %}
+    <button class="button" type="submit">Удалить</button>
+    <a href="{% url 'products_list' %}">Отмена</a>
+</form>
+    {% include 'footer_top.html' %}
+{% endblock %}

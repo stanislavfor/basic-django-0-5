@@ -1,0 +1,16 @@
+<!-- templates/edit_order.html -->
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Редактировать Заказ{% endblock %}
+
+{% block content %}
+<h1>Редактировать Заказ №{{ order.id }}</h1>
+<form class="form bottom" action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input class="button" type="submit" value="Сохранить" />
+</form>
+<p><a href="{% url 'home' %}"><span class="red">Вернуться назад</span></a></p>
+    {% include 'article-form.html' %}
+{% include 'footer_top.html' %}
+{% endblock %}

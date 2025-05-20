@@ -1,0 +1,29 @@
+<!-- templates/profile.html -->
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Профиль{% endblock %}
+{% block content %}
+    <h1>Профиль пользователя</h1>
+    <p>Добро пожаловать, <span class="blue" style="font-weight: bolder">{{ user.username }}</span>!</p>
+
+    <div>
+        <button class="button" style="margin-bottom: 10px;"><a href="{% url 'client_orders' %}"><span style="color: white">Мои заказы</span></a></button>
+        <button class="button" style="margin-bottom: 10px;"><a href="{% url 'add_order' %}"><span style="color: white">Оформить заказ</span></a></button>
+        <button class="button" style="margin-bottom: 10px;"><a href="{% url 'update_profile' %}"><span style="color: white">Редактировать профиль</span></a></button>
+        <form method="post" action="{% url 'custom_logout' %}">
+            {% csrf_token %}
+            <button class="button" type="submit">Выйти из аккаунта</button>
+        </form>
+    </div>
+
+    <p><a href="{% url 'home' %}"><span class="red">Вернуться на Главную</span></a></p>
+{#    <p><a href="{% url 'logged_out' %}"><span class="red">ВЫЙТИ</span></a></p>#}
+    <div style="text-align: center; overflow: hidden;">
+        <img src="{% static 'images/shop-image-2.jpg' %}" alt="image" style="
+        max-width: 850px; height: auto; margin-top: 70px;">
+    </div>
+    {% include 'article-form.html' %}
+    {% include 'footer_top.html' %}
+{% endblock %}
+
+{## #}

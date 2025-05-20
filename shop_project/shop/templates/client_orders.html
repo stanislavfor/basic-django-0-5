@@ -1,0 +1,38 @@
+<!-- templates/client_orders.html -->
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Мои заказы{% endblock %}
+{% block content %}
+<h1>Мои заказы</h1>
+
+<h2>за последние 7 дней</h2>
+<ul>
+    {% for product in products_last_7_days %}
+    <li>{{ product }}</li>
+    {% empty %}
+    <li>Нет заказов за последние 7 дней.</li>
+    {% endfor %}
+</ul>
+
+<h2>за последние 30 дней</h2>
+<ul>
+    {% for product in products_last_30_days %}
+    <li>{{ product }}</li>
+    {% empty %}
+    <li>Нет заказов за последние 30 дней.</li>
+    {% endfor %}
+</ul>
+
+<h2>за последние 365 дней</h2>
+<ul>
+    {% for product in products_last_365_days %}
+    <li>{{ product }}</li>
+    {% empty %}
+    <li>Нет заказов за последние 365 дней.</li>
+    {% endfor %}
+</ul>
+
+<p><a href="{% url 'profile' %}"><span class="red">Вернуться в аккаунт</span></a></p>
+    {% include 'article-form.html' %}
+{% include 'footer_menu.html' %}
+{% endblock %}

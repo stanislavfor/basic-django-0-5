@@ -1,0 +1,28 @@
+<!-- templates/clients_orders.html -->
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Заказы клиента{% endblock %}
+{% block content %}
+<h1>Заказы клиента</h1>
+<p><a href="{% url 'home' %}"><span class="red">Вернуться назад</span></a></p>
+<form class="form" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="button" type="submit">Показать заказы</button>
+</form>
+<article class="blank">
+    {% if client and products is not None %}
+    <h2>Заказы для клиента: <span class="blue">{{ client.username }}</span></h2>
+    <h3>за последние {{ period }} дней</h3>
+    <ul>
+        {% for product in products %}
+        <li>{{ product }}</li>
+        {% empty %}
+        <li>Нет заказов за последние {{ period }} дней.</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</article>
+    {% include 'article-form.html' %}
+{% include 'footer_menu.html' %}
+{% endblock %}

@@ -4,7 +4,6 @@ body {
     color: #333;
     margin: 0 auto;
     padding: 0;
-    max-width: 1200px;
 }
 
 header {
@@ -24,7 +23,7 @@ header {
     left: 0;
 }
 
-.logo  img {
+.logo img {
     height: 54px;
 }
 
@@ -55,7 +54,6 @@ header nav ul {
 
 header nav ul li {
     text-align: center;
-    /*width: 200px;*/
 }
 
 .link-white {
@@ -96,9 +94,18 @@ h2 {
     margin-left: 15px;
 }
 
+h4 {
+    margin-left: 15px;
+}
+
 p {
     display: block;
     margin-left: 15px;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 1200px;
 }
 
 .button {
@@ -172,21 +179,23 @@ p {
     padding-left: 15px;
 }
 
+.footer-menu-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 .footer-menu {
     height: 50px;
-    width: 1200px;
+    width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     background-color: #2c974b;
     overflow: hidden;
     position: fixed;
     bottom: 50px;
     color: white;
     text-align: center;
-    /*padding-top: 10px;*/
-    /*padding-bottom: 8px;*/
-    padding-left: 0;
-    padding-right: 0;
 }
 
 .footer-menu:hover {
@@ -195,7 +204,7 @@ p {
 
 .footer-menu ul {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -216,12 +225,8 @@ p {
 }
 
 footer {
-    max-width: 1200px;
     display: flex;
     justify-content: center;
-}
-
-footer {
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -237,11 +242,11 @@ footer:hover {
     color: white;
 }
 
-/* Стили для адаптивной верстки */
+/* -------------- Стили для адаптивной верстки -------------- */
 @media only screen and (min-width: 481px) and (max-width: 768px) {
     body {
-        /*max-width: 100%;*/
-        /*padding: 0 10px;*/
+        max-width: 100%;
+        padding: 0 10px;
     }
 
     header {
@@ -281,19 +286,19 @@ footer:hover {
         width: 100%;
         display: flex;
         justify-content: center;
-        padding-left: 100px;
+        padding-left: 0;
     }
 
     .footer-menu ul {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
     }
 
     .link-green {
         padding: 10px 15px;
     }
 }
-
 
 @media only screen and (max-width: 480px) {
     body {
@@ -315,14 +320,13 @@ footer:hover {
     .footer-menu {
         width: 100%;
         display: flex;
-        justify-content: flex-start;
-        padding-left: 100px;
+        justify-content: center;
+        padding-left: 0;
     }
 
     .footer-menu ul {
         flex-direction: row;
-        /*align-items: flex-start;*/
+        justify-content: center;
+        align-items: center;
     }
 }
-
-

@@ -1,15 +1,17 @@
 <!-- templates/footer_menu.html -->
 {% load static %}
-
-<div class="footer-menu">
-    <ul>
-        <li><a class="link-green" href="{% url 'profile' %}"><span class="red">Аккаунт пользователя</span></a></li>
-        <li><a class="link-green" href="{% url 'add_order' %}">Оформить заказ</a></li>
-        <li><a class="link-green" href="{% url 'client_orders' %}">Заказы пользователя</a></li>
-        <li><a class="link-green" href="{% url 'clients_orders' %}"><span class="red">Заказы клиентов</span></a></li>
-        <li><a class="link-green" href="{% url 'orders_list' %}">Наши заказы</a></li>
-        <li><a class="link-green" href="{% url 'clients_list' %}">Наши клиенты</a></li>
-    </ul>
+<div class="footer-menu-container">
+    <div class="footer-menu">
+        <ul>
+            <li><a class="link-green" href="{% url 'profile' %}"><span class="red">Аккаунт пользователя</span></a></li>
+            <li><a class="link-green" href="{% url 'add_order' %}">Оформить заказ</a></li>
+            <li><a class="link-green" href="{% url 'client_orders' %}">Заказы пользователя</a></li>
+            <li><a class="link-green" href="{% url 'clients_orders' %}"><span class="red">Заказы клиентов</span></a></li>
+            <li><a class="link-green" href="{% url 'orders_list' %}">Наши заказы</a></li>
+            <li><a class="link-green" href="{% url 'clients_list' %}">Наши клиенты</a></li>
+        </ul>
+    </div>
 </div>
+
 
 

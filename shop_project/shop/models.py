@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 
 # Create your models here.
@@ -25,6 +26,12 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+    def clean(self):
+        if self.price < 0:
+            raise ValidationError("Цена 'price' не может быть отрицательной.")
+        if self.quantity < 0:
+            raise ValidationError("Количество 'quantity' не может быть отрицательным.")
 
 class Order(models.Model):
     client = models.ForeignKey(User, on_delete=models.CASCADE)

@@ -20,7 +20,7 @@ header {
 .logo {
     position: absolute;
     top: 1px;
-    left: 0;
+    left: 15px;
 }
 
 .logo img {

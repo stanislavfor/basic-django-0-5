@@ -85,7 +85,73 @@ urlpatterns = [
 ]
 ```
 
+##### - Валидация ввода данных
+
+Необходима валидация данных в админ-панели Django, чтобы администратор не мог вводить отрицательные значения стоимости или количества товара. <br>
+Потребуется настройка валидации в файле `models.py`, чтобы добавить валидацию для полей `price` и `quantity` в модели `Product`. <br> 
+Для добавления пользовательской валидации можно использовать метод `clean`:
+
+```
+from django.db import models
+from django.core.exceptions import ValidationError
+from django.contrib.auth.models import User
+
+# Create your models here.
+
+class Product(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.TextField()
+    price = models.DecimalField(max_digits=8, decimal_places=2)
+    quantity = models.PositiveIntegerField(default=0)
+    photo = models.ImageField(upload_to='product_photos/', null=True, blank=True)
+    added_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
+
+    def clean(self):
+        if self.price < 0:
+            raise ValidationError("Цена 'price' не может быть отрицательной.")
+        if self.quantity < 0:
+            raise ValidationError("Количество 'quantity' не может быть отрицательным.")
+
+```
+
+### Шаг 2: Настройка валидации в админ-панели
+
+Чтобы добавить валидацию для полей `price` и `quantity` в админ-панели, необходимо обновить файл `admin.py`. <br> 
+Для этого в классе `ProductAdmin` также использовать метод `clean`:
+
+```
+from django.contrib import admin
+from django.core.exceptions import ValidationError
+from .models import Profile, Product, Order, OrderItem
+
+@admin.register(Product)
+class ProductAdmin(admin.ModelAdmin):
+    list_display = ('name', 'description', 'price', 'quantity', 'added_date')
+    search_fields = ('name', 'description')
+    list_filter = ('added_date',)
+
+    def clean(self):
+        data = super().clean()
+        if data.get('price') < 0:
+            raise ValidationError("Цена 'price' не может быть отрицательной.")
+        if data.get('quantity') < 0:
+            raise ValidationError("Количество 'quantity' не может быть отрицательным.")
+        return data
+        
+```
+
+
 ##### - Запуск сервера разработки
+
+Создать и применить миграции для моделей проекта:
+
+```bash
+python manage.py makemigrations
+python manage.py migrate
+```
 
 Следует запустить сервер разработки, чтобы проверить изменения. <br> 
 Выполнить в корневой папке проекта команду:
@@ -93,6 +159,12 @@ urlpatterns = [
 ```sh
 python manage.py runserver
 ```
+
+##### - Доступ к админ-панели
+
+Открыть веб-браузер и перейти по адресу http://localhost:8000/admin/. <br>
+Далее войти в систему, используя учетные данные суперпользователя.
+
 <br><br>
 
 ![](assets/1.jpg)
